@@ -8,6 +8,7 @@ capybara-*.html
 .rvmrc
 /.bundle
 /vendor/bundle
+/vendor/*
 /log/*
 /tmp/*
 /test/*
