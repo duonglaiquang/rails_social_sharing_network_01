@@ -1,35 +1,50 @@
-<nav class = "fixed-top">
+<nav class="fixed-top">
   <header id="header" class="full-header">
     <div id="header-wrap">
       <div class="container clearfix">
         <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
         <div id="logo">
-          <%= link_to "index.html", class: "standard-logo" do %>
-            <%= image_tag "logo.png", alt: "Canvas Logo" %>
-          <% end %>
         </div>
+        <div id="top-account" class="dropdown">
+          <%= link_to "#", {class: "btn btn-secondary btn-sm dropdown-toggle", "data-toggle": "dropdown"} do %>
+            <i class="icon-user"></i>
+          <% end %>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <%= link_to "Profile", "#", class: "dropdown-item tleft" %>
+            <%= link_to "#", class: "dropdown-item tleft" do %>
+              <%= t "application.message" %>
+              <span class="badge badge-pill badge-secondary fright" style="margin-top: 3px;">5</span>
+            <% end %>
+            <%= link_to "Settings", "#", class: "dropdown-item tleft" %>
+            <%= link_to "#", class: "dropdown-item tleft" do %>
+              <%= t "application.logout" %>
+              <i class="icon-signout"></i>
+            <% end %>
+          </ul>
+        </div>
+
         <nav id="primary-menu">
           <ul>
             <li>
-              <%= link_to "index.html" do %>
-                <div></div>
-              <% end %>
+              <%= link_to t("application.hot"), "#" %>
             </li>
-          </ul>
-          <ul>
             <li>
-              <%= link_to "#" do %>
-                <div></div>
-              <% end %>
+              <%= link_to t("application.trending"), "#" %>
+            </li>
+            <li class="mega-menu">
+              <%= link_to t("application.fresh"), "#" %>
+            </li>
+            <li class="mega-menu">
+              <%= link_to "Something", "#" %>
             </li>
           </ul>
-          <ul>
-            <li>
-              <%= link_to "#" do %>
-                <div></div>
-              <% end %>
-            </li>
-          </ul>
+
+          <!--          <div id="top-search">-->
+          <!--            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>-->
+          <!--            <form action="http://themes.semicolonweb.com/html/canvas/search.html" method="get">-->
+          <!--              <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">-->
+          <!--            </form>-->
+          <!--          </div>-->
         </nav>
       </div>
     </div>

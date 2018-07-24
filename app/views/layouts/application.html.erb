@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsSocialSharingNetwork01</title>
+    <title>MFun</title>
     <%= render "layouts/rails_default" %>
   </head>
 
-  <body>
-    <body class="stretched">
-      <%= render "layouts/header" %>
-      <%= yield %>
-    </body>
-  </body>
+<body>
+<%= render "layouts/header" %>
+<div class="stretched">
+  <%= yield %>
+  <%= render "layouts/footer" %>
+</div>
+</body>
 </html>
