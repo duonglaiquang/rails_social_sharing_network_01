@@ -1,0 +1,32 @@
+<section id="page-title">
+  <div class="container clearfix">
+    <h1><%= t ".acount" %></h1>
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#"><%= t ".home" %></a></li>
+    <li class="breadcrumb-item"><a href="#"><%= t ".pages" %></a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t ".login" %></li>
+    </ol>
+  </div>
+</section>
+
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <div class="acctitle"><i class="acc-closed icon-lock3"></i>
+          <i class="acc-open icon-unlock"></i>
+          <%= t ".login_to_your_acc" %></div>
+        <div class="acc_content clearfix">
+          <%= render "sessions/login_form" %>
+        </div>
+        <div class="acctitle">
+          <i class="acc-closed icon-user4"></i>
+          <i class="acc-open icon-ok-sign"></i><%= t ".new_signup" %>
+        </div>
+        <div class="acc_content clearfix">
+          <%= render "users/register_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
