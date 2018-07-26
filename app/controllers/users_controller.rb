@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, :correct_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -9,28 +10,44 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       @user.send_activation_email
-      flash[:info] = t ".please_check_mail"
+      flash[:info] = t "users.create.please_check_mail"
       redirect_to root_url
     else
       flash[:danger] = t "error"
-      render "sessions/new"
+      render :new
     end
   end
 
-  def show; end
+  def show;
+  end
+
+  def edit;
+  end
+
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = t "success"
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
 
   private
 
   def user_params
-    params.require(:user).permit :name, :email, :password,
-      :password_confirmation
+    params.require(:user).permit :name, :email, :password, :bio,
+                                 :password_confirmation
+  end
+
+  def correct_user
+    redirect_to home_path unless @user.current_user? current_user
   end
 
   def find_user
     @user = User.find_by id: params[:id]
-
     return if @user
-    flash[:success] = t "user_not_found"
+    flash[:danger] = t "user_not_found"
     redirect_to root_path
   end
 end
