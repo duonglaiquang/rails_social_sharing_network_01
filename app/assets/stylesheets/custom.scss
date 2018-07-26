@@ -1,3 +1,44 @@
-.divcenter{
+#page-title {
+  margin-top: 100px;
+}
+
+textarea {
+  resize: none;
+}
+
+p {
+  word-wrap: break-word;
+}
+
+.button-green {
+  color: white;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal-lg {
+  max-width: 1100px;
+}
+
+.divcenter {
   max-width: 550px;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  .form-control {
+    color: red;
+  }
 }

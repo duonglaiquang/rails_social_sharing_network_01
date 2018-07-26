@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         log_in @user
         redirect_to @user
       else
-        flash[:warning] = t ".account_not_activated"
+        flash[:warning] = t "sessions.create.account_not_activated"
         redirect_to root_url
       end
     else

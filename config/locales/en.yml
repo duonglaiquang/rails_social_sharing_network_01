@@ -3,36 +3,72 @@ en:
   error: "Something went wrong !"
   success: "Successfully !"
   user_not_found: "User not found"
+  please_login: "You are not logged in"
+
+  application:
+      hot: "Hot"
+      trending: "Trending"
+      fresh: "Fresh"
+      profile: "Profile"
+      message: "Messages"
+      setting: "Settings"
+      logout: "Logout"
+      update: "Update"
+
+  home:
+    favor_tag: "Favorite Tags"
+    tag_cloud: "Tag Cloud"
+    followed_feed: "Followed Feed"
+    potd: "Posts of the day"
+    best_user: "This week's best user"
+
   users:
     create:
       please_check_mail: "Please check your email to activate your account."
+
     register_form:
       name: "Name"
       re_enter_pass: "Re-enter Password"
       register_now: "Register Now"
+
+    show:
+      bio: "About me"
+      feed: "Feeds"
+      post: "Posts"
+      reply: "Replies"
+      connection: "Connection"
+
+    edit:
+      info: "Edit account details"
+
   sessions:
     new:
-      acount: "My acount"
+      acount: "My account"
       home: "Home"
       pages: "Pages"
       login: "Login"
       new_signup: "New Signup? Register for an Account"
       login_to_your_acc: "Login to your account"
+
     login_form:
       email: "Email Address"
       password: "Password"
       login_now: "Login now"
       forgot_pass: "Forgot Password?"
+
     create:
       account_not_activated: "Account not activated. "
       check_your_email: "Check your email for the activation link."
+
   shared:
     error_messages:
       error: "Error"
       contain: "The form contain"
+
   account_activations:
     account_activated: "Account activated!"
     invalid_activation: "Invalid activation link"
+
   user_mailer:
     account_activation:
       account_activation: "Account activation"
