@@ -1,0 +1,20 @@
+<% provide :title, t(".login") %>
+<% provide :name, t(".login") %>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <div class="acctitle">
+          <i class="acc-closed icon-user4"></i>
+          <i class="acc-open icon-ok-sign"></i>
+          <%= t "sessions.new.new_signup" %>
+        </div>
+        <div class="acc_content clearfix">
+          <%= render "users/register_form" %>
+        </div>
+        <%= t "sessions.new.login_to_your_acc" %>
+        <%= link_to t("sessions.new.login"), login_path %>
+      </div>
+    </div>
+  </div>
+</section>

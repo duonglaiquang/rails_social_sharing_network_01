@@ -1,11 +1,12 @@
 <%= form_for :session, url: login_path do |f| %>
+  <%= render "shared/error_messages" %>
   <div class="col_full">
-    <%= f.label :email, t(".email") %>
-    <%= f.text_field :email , class: "form-control"%>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
   <div class="col_full">
-    <%= f.label :password, t(".password") %>
-    <%= f.password_field :password , class: "form-control"%>
+    <%= f.label :password, t("activerecord.models.user.password") %>
+    <%= f.password_field :password %>
   </div>
   <div class="col_full nobottommargin">
     <%= f.submit t(".login_now"), class: "button button-3d button-black nomargin" %>

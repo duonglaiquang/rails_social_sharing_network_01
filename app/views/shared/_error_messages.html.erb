@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+  <div class="error_explanation">
+    <div class="alert alert-danger">
+      <%= t "shared.error_messages.contain" %> <%= pluralize(@user.errors.count, t("shared.error_messages.error")) %>
+    </div>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

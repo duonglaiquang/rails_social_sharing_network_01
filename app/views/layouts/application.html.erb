@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RailsSocialSharingNetwork01</title>
-    <%= render "layouts/rails_default" %>
-  </head>
+<head>
+  <title><%= full_title yield :title %></title>
+  <%= render "layouts/rails_default" %>
+</head>
 
-  <body>
-    <div class="stretched">
-      <%= render "layouts/header" %>
-      <%= yield %>
+<body>
+<%= render "layouts/header" %>
+<div class="stretched">
+
+  <section id="page-title">
+    <div class="container clearfix">
+      <h1><%= full_title yield :name %></h1>
     </div>
-  </body>
+  </section>
+
+  <% flash.each do |message_type, message| %>
+    <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+  <% end %>
+
+  <%= yield %>
+  <%= render "layouts/modal" %>
+
+  <%= render "layouts/footer" %>
+</div>
+</body>
 </html>
