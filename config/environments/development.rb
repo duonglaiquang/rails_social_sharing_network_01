@@ -36,8 +36,8 @@ Rails.application.configure do
       address: "smtp.gmail.com",
       port: 587,
       domain: ENV["DOMAIN"],
-      user_name: ENV["USERNAME"],
-      password: ENV["PASSWORD"],
+      user_name: ENV["SENDGRID_USERNAME"],
+      password: ENV["SENDGRID_PASSWORD"],
       authentication: :plain,
       enable_starttls_auto: true,
   }

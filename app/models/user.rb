@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_reader :activation_token
+  attr_reader :activation_token, :reset_token
   attr_accessor :remember_token
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -70,6 +70,20 @@ class User < ApplicationRecord
 
   def forget
     update_attribute :remember_digest, nil
+  end
+
+  def create_reset_digest
+    @reset_token = User.new_token
+    update_attributes reset_digest: User.digest(reset_token),
+      updated_at: Time.zone.now
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    updated_at < Setting.max_timing.hours.ago
   end
 
   private
