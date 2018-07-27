@@ -9,6 +9,10 @@
   </div>
   <div class="col_full nobottommargin">
     <%= f.submit t(".login_now"), class: "button button-3d button-black nomargin" %>
-  </div>
+  </div><br>
+  <%= f.label :remember_me, class: "radio-small" do %>
+    <%= f.check_box :remember_me, class: "radio-style", type: "radio"%>
+    <%= t "remember_me" %>
+  <% end %>
   <%= link_to t(".forgot_pass"), "#", class: "fright" %>
 <% end %>

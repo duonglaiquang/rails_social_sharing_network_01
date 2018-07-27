@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if @user&.authenticate params[:session][:password]
       if @user.activated?
         log_in @user
+        remember_user user
         redirect_to @user
       else
         flash[:warning] = t "sessions.create.account_not_activated"
@@ -20,7 +21,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_path
+  end
+
+  private
+
+  def remember_user user
+    params[:session][:remember_me] == "1" ? remember(user) : forget(user)
   end
 end

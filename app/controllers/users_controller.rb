@@ -18,11 +18,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show;
-  end
+  def show; end
 
-  def edit;
-  end
+  def edit; end
 
   def update
     if @user.update_attributes user_params
@@ -37,7 +35,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password, :bio,
-                                 :password_confirmation
+      :password_confirmation
   end
 
   def correct_user

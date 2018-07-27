@@ -55,7 +55,7 @@ en:
       password: "Password"
       login_now: "Login now"
       forgot_pass: "Forgot Password?"
-
+      remember_me: "Remeber me"
     create:
       account_not_activated: "Account not activated. "
       check_your_email: "Check your email for the activation link."
