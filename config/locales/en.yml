@@ -5,15 +5,25 @@ en:
   user_not_found: "User not found"
   please_login: "You are not logged in"
 
+  activerecord:
+    models:
+      user:
+        name: "Name"
+        re_enter_pass: "Re-enter Password"
+        email: "Email Address"
+        password: "Password"
+        bio: "About me"
+
   application:
-      hot: "Hot"
-      trending: "Trending"
-      fresh: "Fresh"
-      profile: "Profile"
-      message: "Messages"
-      setting: "Settings"
-      logout: "Logout"
-      update: "Update"
+    hot: "Hot"
+    trending: "Trending"
+    fresh: "Fresh"
+    profile: "Profile"
+    message: "Messages"
+    setting: "Settings"
+    logout: "Logout"
+    update: "Update"
+    upload: "UPLOAD"
 
   home:
     favor_tag: "Favorite Tags"
@@ -27,12 +37,9 @@ en:
       please_check_mail: "Please check your email to activate your account."
 
     register_form:
-      name: "Name"
-      re_enter_pass: "Re-enter Password"
       register_now: "Register Now"
 
     show:
-      bio: "About me"
       feed: "Feeds"
       post: "Posts"
       reply: "Replies"
@@ -51,8 +58,6 @@ en:
       login_to_your_acc: "Login to your account"
 
     login_form:
-      email: "Email Address"
-      password: "Password"
       login_now: "Login now"
       forgot_pass: "Forgot Password?"
       remember_me: "Remeber me"
