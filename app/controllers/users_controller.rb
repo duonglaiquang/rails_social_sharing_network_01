@@ -18,7 +18,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+
+    return if @user && @user.activated
+    redirect_to root_path
+  end
 
   def edit; end
 

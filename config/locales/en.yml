@@ -73,3 +73,25 @@ en:
     account_activation:
       account_activation: "Account activation"
       activate: "Active"
+
+  password_resets:
+    new:
+      forgot: "Forgot password"
+      submit: "submit"
+    create:
+      email_sent: "Email sent with password reset instructions"
+      email_add: "Email address not found"
+    update:
+      password_has: "Password has been reset."
+      cant: "Can't be empty"
+    check_expiration:
+      expried: "password reset has expired."
+    edit:
+      reset_password: "Reset password"
+      confirmation: "confirmation"
+      update_password: "update password"
+
+  user_mailer:
+    password_rs: "Password reset"
+    password_reset:
+      reset_password: "Reset password"
