@@ -46,6 +46,7 @@ GEM
     ast (2.4.0)
     autoprefixer-rails (8.6.5)
       execjs
+    aws_cf_signer (0.1.3)
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.1)
@@ -59,6 +60,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cloudinary (1.9.1)
+      aws_cf_signer
+      rest-client
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -71,8 +75,11 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.2.1)
       dry-validation (>= 0.10.4)
+    connection_pool (2.2.2)
     crass (1.0.4)
     deep_merge (1.2.1)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
@@ -109,6 +116,8 @@ GEM
       thor (~> 0.14)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -151,6 +160,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -160,6 +170,8 @@ GEM
     powerpack (0.1.2)
     puma (3.12.0)
     rack (2.0.5)
+    rack-protection (2.0.3)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.0)
@@ -191,6 +203,11 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.1)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rubocop (0.54.0)
       parallel (~> 1.10)
       parser (>= 2.5)
@@ -211,6 +228,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sidekiq (5.1.3)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -234,6 +256,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.16)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     unicode-display_width (1.4.0)
     web-console (3.6.2)
       actionview (>= 5.0)
@@ -253,6 +278,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.7)
   byebug
   carrierwave (= 1.2.2)
+  cloudinary
   coffee-rails (~> 4.2)
   config
   faker
@@ -265,6 +291,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rubocop (~> 0.54.0)
   sass-rails (~> 5.0)
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

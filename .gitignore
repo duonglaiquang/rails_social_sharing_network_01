@@ -22,6 +22,7 @@ pickle-email-*.html
 .project
 /config/database.yml
 #config/secrets.yml
+config/initializers/cloudinary.rb
 config/facebook.yml
 config/master.key
 config/credentials.yml.enc
