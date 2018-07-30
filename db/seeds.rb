@@ -16,6 +16,10 @@ User.create!(name: "Example User",
                activated: true)
 end
 
+99.times do |n|
+  Post.create! title: Faker::Lorem.word, content: Faker::Lorem.sentence, user_id: rand(1..10)
+end
+
 users = User.all
 user = users.first
 following = users[2..50]

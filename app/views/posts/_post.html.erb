@@ -3,8 +3,8 @@
   <span class="content">
     <%= post.content %>
     <%= image_tag post.picture.url if post.picture? %>
-    <% if post[:video].present? &&
-      post[:video].length < Settings.length_video_nam %>
+    <% if post[:video].present? %>
+      <% if post[:video].length < Settings.length_video_nam %>
         <%= video_tag post.video.url, controls: true %>
       <% else %>
         <%= video_tag post[:video], controls: true %>

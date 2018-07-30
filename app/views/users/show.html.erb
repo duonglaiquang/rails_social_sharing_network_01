@@ -85,13 +85,16 @@
               <%= t "application.message" %>
               <i class="icon-mail float-right"></i>
             <% end %>
-
-            <%= link_to edit_user_path(current_user), class: "list-group-item list-group-item-action clearfix" do %>
-              <%= t "application.setting" %>
-              <i class="icon-cog float-right"></i>
+            <% if logged_in? %>
+              <%= link_to edit_user_path(current_user),
+                class: "list-group-item list-group-item-action clearfix" do %>
+                <%= t "application.setting" %>
+                <i class="icon-cog float-right"></i>
+              <% end %>
             <% end %>
 
-            <%= link_to logout_path, method: :delete, class: "list-group-item list-group-item-action clearfix" do %>
+            <%= link_to logout_path, method: :delete,
+              class: "list-group-item list-group-item-action clearfix" do %>
               <%= t "application.logout" %>
               <i class="icon-line2-logout float-right"></i>
             <% end %>

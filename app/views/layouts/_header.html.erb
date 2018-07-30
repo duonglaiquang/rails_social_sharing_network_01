@@ -8,6 +8,10 @@
 
         <nav id="primary-menu">
           <ul>
+            <%= form_with url: search_path, local: true do |f|%>
+              <%= f.text_field :q, type: "search", data: {behavior: "autocomplete"},
+                placeholder: t(".search") %>
+            <% end %>
             <li class="mega-menu">
               <%= link_to t("application.hot"), home_path %>
             </li>

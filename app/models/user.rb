@@ -28,6 +28,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  scope :search, -> (keyword) { where "email LIKE ? ", "%#{keyword}%" }
+
   class << self
     def digest string
       cost =
@@ -42,6 +44,7 @@ class User < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+
   end
 
   def remember
@@ -99,6 +102,7 @@ class User < ApplicationRecord
   end
 
   private
+
 
   def email_downcase
     email.downcase!
