@@ -6,6 +6,7 @@ ruby "2.5.1"
 gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass", "3.3.7"
+gem "carrierwave", "1.2.2"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "faker"

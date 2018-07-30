@@ -9,6 +9,7 @@ en:
     modal:
       post: "Post"
       compose_new_post: "Compose new post..."
+      video: "Video"
   activerecord:
     models:
       user:
