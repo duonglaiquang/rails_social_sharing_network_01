@@ -31,8 +31,12 @@ en:
     followed_feed: "Followed Feed"
     potd: "Posts of the day"
     best_user: "This week's best user"
-
+  posts:
+    create:
+      post_created : "Post created!"
   users:
+    new:
+      login: "login"
     create:
       please_check_mail: "Please check your email to activate your account."
 
@@ -69,6 +73,8 @@ en:
     error_messages:
       error: "Error"
       contain: "The form contain"
+    post:
+      post: "Post"
 
   account_activations:
     account_activated: "Account activated!"
