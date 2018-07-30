@@ -20,7 +20,7 @@
   <% end %>
 
   <%= yield %>
-  <%= render "layouts/modal" %>
+  <%= render "layouts/modal", post: @post %>
 
   <%= render "layouts/footer" %>
 </div>

@@ -5,6 +5,10 @@ en:
   user_not_found: "User not found"
   please_login: "You are not logged in"
 
+  layouts:
+    modal:
+      post: "Post"
+      compose_new_post: "Compose new post..."
   activerecord:
     models:
       user:
@@ -34,6 +38,9 @@ en:
   posts:
     create:
       post_created : "Post created!"
+      post_create_failed: "Post create failed"
+    destroy:
+      post_deleted : "Post deleted!"
   users:
     new:
       login: "login"
