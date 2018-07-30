@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update]
-  before_action :logged_in_user, :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: %i(edit update)
+  before_action :find_user, only: %i(show edit update)
+  before_action :correct_user, only: %i(edit update)
 
   def new
     @user = User.new
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       @user.send_activation_email
-      flash[:info] = t "users.create.please_check_mail"
+      flash[:info] = t ".please_check_mail"
       redirect_to root_url
     else
       flash[:danger] = t "error"
@@ -19,9 +20,11 @@ class UsersController < ApplicationController
   end
 
   def show
-
-    return if @user && @user.activated
-    redirect_to root_path
+    if @user&.activated
+      @posts = @user.posts
+    else
+      redirect_to root_url
+    end
   end
 
   def edit; end
