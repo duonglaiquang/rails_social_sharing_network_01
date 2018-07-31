@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    @user = User.new
   end
 
   def create
@@ -24,13 +23,14 @@ class SessionsController < ApplicationController
     params[:session][:remember_me] == "1" ? remember(user) : forget(user)
   end
 
-  def user_activate @user
-    if @user.activated?
-      log_in @user
-      remember_user @user
-      redirect_to @user
+  def user_activate user
+    if user.activated?
+      log_in user
+      remember_user user
+      redirect_to user
     else
       flash[:warning] = t "sessions.create.account_not_activated"
       redirect_to root_url
     end
+  end
 end

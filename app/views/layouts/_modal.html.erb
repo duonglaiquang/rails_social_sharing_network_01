@@ -8,6 +8,13 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
+          <%= form_for post do |f| %>
+            <%= render "shared/error_messages", object: f.object %>
+            <div class="field">
+              <%= f.text_area :content, placeholder: t(".compose_new_post") %>
+            </div>
+            <%= f.submit t(".post"), class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
