@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :find_user, only: %i(show edit update)
   before_action :correct_user, only: %i(edit update)
 
+  def index
+    @users = User.order(:name).page(params[:page]).per Settings.pagnation
+  end
+
   def new
     @user = User.new
   end
@@ -20,11 +24,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @user&.activated
-      @posts = @user.posts
-    else
-      redirect_to root_url
-    end
+    @posts = @user.posts
+    @followings = @user.following
+    @followers = @user.followers
+    return if @user&.activated
+    redirect_to root_path
   end
 
   def edit; end
