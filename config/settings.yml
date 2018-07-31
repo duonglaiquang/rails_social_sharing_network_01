@@ -3,3 +3,4 @@ max_email: 255
 min_password: 6
 title: "MFun"
 max_timing: 6
+pagnation: 16

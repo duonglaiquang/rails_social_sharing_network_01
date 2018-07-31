@@ -29,6 +29,7 @@ en:
     logout: "Logout"
     update: "Update"
     upload: "UPLOAD"
+    users: "Users"
 
   home:
     favor_tag: "Favorite Tags"
@@ -59,6 +60,12 @@ en:
 
     edit:
       info: "Edit account details"
+
+  relationships:
+    follow: "Follow"
+    following: "Following"
+    followers: "Followers"
+    unfollow: "Unfollow"
 
   sessions:
     new:
@@ -92,6 +99,9 @@ en:
     account_activation:
       account_activation: "Account activation"
       activate: "Active"
+    password_rs: "Password reset"
+    password_reset:
+      reset_password: "Reset password"
 
   password_resets:
     new:
@@ -109,8 +119,3 @@ en:
       reset_password: "Reset password"
       confirmation: "confirmation"
       update_password: "update password"
-
-  user_mailer:
-    password_rs: "Password reset"
-    password_reset:
-      reset_password: "Reset password"
