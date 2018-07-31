@@ -6,6 +6,8 @@ en:
   please_login: "You are not logged in"
 
   layouts:
+    header:
+      search: "Search"
     modal:
       post: "Post"
       compose_new_post: "Compose new post..."
