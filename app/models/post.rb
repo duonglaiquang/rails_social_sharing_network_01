@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  mount_uploader :picture, PictureUploader
+  mount_uploader :video, VideoUploader
   validates :content, presence: true
   has_many :notifications, dependent: :destroy
   has_many :tags
