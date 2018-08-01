@@ -1,0 +1,19 @@
+<div class="col-lg-6 bottommargin user-index">
+  <div class="team team-list clearfix index">
+    <div class="user-image">
+      <%= image_tag "avatar.jpg", class: "img-circle img-thumbnail notopmargin nobottommargin profile-pic" %>
+    </div>
+    <div class="team-desc">
+      <div class="team-title">
+        <h4> <%= link_to user.name, user %></h4>
+      </div>
+      <div class="team-content">
+        <div class="index-info">
+          <h5> Post: 0</h5>
+          <h5> Point: 0</h5>
+        </div>
+        <%= render "follow_form", user: user %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,6 +36,7 @@ en:
     update: "Update"
     upload: "UPLOAD"
     users: "Users"
+    leaderboard: "Leaderboard"
 
   home:
     favor_tag: "Favorite Tags"

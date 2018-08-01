@@ -1,0 +1,13 @@
+<% provide :title, t("application.leaderboard") %>
+<% provide :title, t("application.leaderboard") %>
+
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="row clearfix">
+        <%= render @users %>
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,6 @@
+<%= form_for :relationship, url: relationships_path,
+             html: {method: :delete}, remote: true do |f| %>
+  <%= hidden_field_tag :followed_id, user.id %>
+  <%= f.submit t("relationships.unfollow"), class: "button button-border
+    button-border-thin button-red index-rela unfollow" %>
+<% end %>
