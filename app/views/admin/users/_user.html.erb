@@ -1,0 +1,14 @@
+<tr>
+  <td><%= user.id %></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.following.count %></td>
+  <td><%= user.followers.count %></td>
+  <td><%= user.posts.count %></td>
+  <td><%= user.created_at %></td>
+  <td><%= user.updated_at %></td>
+  <td>
+    <%= link_to t(".delete"), admin_user_path(user.id),
+      method: :delete, data: {confirm: t("sure")} unless user.admin %>
+  </td>
+</tr>

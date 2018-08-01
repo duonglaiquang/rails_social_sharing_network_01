@@ -53,10 +53,4 @@ class UsersController < ApplicationController
     redirect_to home_path unless @user.current_user? current_user
   end
 
-  def find_user
-    @user = User.find_by id: params[:id]
-    return if @user
-    flash[:danger] = t "user_not_found"
-    redirect_to root_path
-  end
 end

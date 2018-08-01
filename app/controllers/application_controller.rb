@@ -24,4 +24,15 @@ class ApplicationController < ActionController::Base
   def new_post
     @post = Post.new
   end
+
+  def find_user
+    @user = User.find_by id: params[:id]
+    return if @user
+    flash[:danger] = t "user_not_found"
+    redirect_to root_path
+  end
+
+  def check_admin
+    redirect_to root_path unless current_user.admin?
+  end
 end

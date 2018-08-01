@@ -1,0 +1,34 @@
+<section id="page-title">
+  <div class="container clearfix">
+    <h1><%= t "datatable" %></h1>
+  </div>
+</section>
+
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="table-responsive">
+      <table id="datatable1" class="table table-striped table-bordered"
+        cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th><%= t ".id" %></th>
+            <th><%= t ".name" %></th>
+            <th><%= t ".email" %></th>
+            <th><%= t ".following" %></th>
+            <th><%= t ".followers" %></th>
+            <th><%= t ".post" %></th>
+            <th><%= t ".created_at" %></th>
+            <th><%= t ".updated_at" %></th>
+            <th><%= t ".delete" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= paginate @users %>
+          <%= render @users %>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
