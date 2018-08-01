@@ -4,6 +4,10 @@ en:
   success: "Successfully !"
   user_not_found: "User not found"
   please_login: "You are not logged in"
+  sure: "Sure"
+  home: "Home"
+  shortcode: "ShortCodes"
+  datatable: "Data Table"
 
   layouts:
     header:
@@ -121,3 +125,19 @@ en:
       reset_password: "Reset password"
       confirmation: "confirmation"
       update_password: "update password"
+
+  admin:
+    users:
+      index:
+        id: "ID"
+        email: "Email"
+        name: "Name"
+        following: "Following"
+        follwers: "Followers"
+        post: "Post"
+        created_at: "Create At"
+        update_at: "Update At"
+        delete: "Delete"
+        datatable: "Data Table"
+
+

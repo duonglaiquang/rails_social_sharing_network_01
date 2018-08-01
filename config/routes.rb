@@ -8,13 +8,18 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/search", to: "search#search"
   resources :users
-  resources :account_activations, only: [:edit]
-  resources :password_resets, except: [:index, :show, :destroy]
-  resources :posts, only: [:create, :destroy]
+  resources :account_activations, only: :edit
+  resources :password_resets, except: %i(index show destroy)
+  resources :posts, only: %i(create destroy)
   resources :users do
     member do
       get :following, :followers
     end
   end
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i(create destroy)
+
+  namespace :admin do
+    resources :users, only: %i(index destroy)
+    resources :posts, only: %i(index destroy)
+  end
 end

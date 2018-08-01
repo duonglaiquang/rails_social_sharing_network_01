@@ -1,0 +1,12 @@
+<tr>
+  <td><%= post.title  %></td>
+  <td><%= post.user_id %></td>
+  <td><%= post.picture if @post.picture? %></td>
+  <td><%= post.video if @post.video? %></td>
+  <td><%= post.created_at %></td>
+  <td><%= post.updated_at %></td>
+  <td>
+    <%= link_to t(".delete"), admin_post_path(post.id),
+      method: :delete, data: {confirm: t("sure")} %>
+  </td>
+</tr>
