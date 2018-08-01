@@ -6,14 +6,20 @@
       <% if post[:picture].length < Settings.length_picture_name %>
         <%= image_tag post.picture.url %>
       <% else %>
-        <%= image_tag post[:picture] %>
+        <% post_image = post_image_id post %>
+        <% if post_image.last == "gif" %>
+          <% post_gif_video_link = change_gif_link_to_mp4 post %>
+          <%= cl_video_tag post_gif_video_link, controls: true %>
+        <% else %>
+          <%= cl_image_tag post_image.first %>
+        <% end %>
       <% end %>
     <% end %>
     <% if post[:video].present? %>
       <% if post[:video].length < Settings.length_video_name %>
         <%= video_tag post.video.url, controls: true %>
       <% else %>
-        <%= video_tag post[:video], controls: true %>
+        <%= cl_video_tag post_video_id(post).to_s, controls: true %>
       <% end %>
     <% end %>
   </span>
