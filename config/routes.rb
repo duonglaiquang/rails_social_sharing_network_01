@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i(create destroy)
-
   namespace :admin do
     resources :users, only: %i(index destroy)
     resources :posts, only: %i(index destroy)

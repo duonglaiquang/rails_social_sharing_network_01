@@ -1,0 +1,51 @@
+<div class="row clearfix">
+  <div class="col-lg-12">
+    <div class="tabs tabs-alt clearfix" id="tabs-profile">
+
+      <ul class="tab-nav clearfix">
+        <li>
+          <%= link_to "#tab-feeds" do %>
+            <i class="icon-rss2"></i>
+            <%= t "users.show.feed" %>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to "#tab-posts" do %>
+            <i class="icon-pencil2"></i>
+            <%= t "users.show.post" %>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to "#tab-replies" do %>
+            <i class="icon-reply"></i>
+            <%= t "users.show.reply" %>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to "#tab-connections" do %>
+            <i class="icon-users"></i>
+            <%= t "users.show.connection" %>
+          <% end %>
+        </li>
+      </ul>
+
+      <div class="tab-container">
+        <div class="tab-content clearfix" id="tab-feeds">
+        </div>
+
+        <div class="tab-content clearfix" id="tab-posts">
+          <%= render "posted" %>
+        </div>
+
+        <div class="tab-content clearfix" id="tab-replies">
+        </div>
+
+        <div class="tab-content clearfix" id="tab-connections">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

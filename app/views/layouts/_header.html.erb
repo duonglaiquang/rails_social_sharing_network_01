@@ -16,13 +16,13 @@
               <%= link_to t("application.hot"), home_path %>
             </li>
             <li class="mega-menu">
-              <%= link_to t("application.trending"), "#" %>
+              <%= link_to t("application.trending"), home_path %>
             </li>
             <li class="mega-menu">
-              <%= link_to t("application.fresh"), "#" %>
+              <%= link_to t("application.fresh"), home_path %>
             </li>
             <li class="mega-menu">
-              <%= link_to "Something", "#" %>
+              <%= link_to t("application.users"), users_path %>
             </li>
           </ul>
           <% if logged_in? %>
@@ -54,7 +54,7 @@
           <% else %>
             <ul>
               <li class="mega-menu">
-                <%= link_to t("sessions.new.new_signup"), login_path %>
+                <%= link_to t("sessions.new.login"), login_path %>
               </li>
             </ul>
           <% end %>

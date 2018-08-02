@@ -1,0 +1,22 @@
+<% if @followings.any? %>
+  <div class="row topmargin-sm">
+    <% @followings.each do |user| %>
+      <div class="col-lg-6 bottommargin connection">
+        <div class="team team-list clearfix">
+          <div class="user-image">
+            <%= image_tag "avatar.jpg", class: "img-circle img-thumbnail
+              notopmargin nobottommargin profile-pic" %>
+          </div>
+          <div class="team-desc">
+            <div class="team-title">
+              <h4> <%= link_to user.name, user %></h4>
+            </div>
+            <div class="team-content">
+              <%= render "follow_form", user: user %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
