@@ -82,6 +82,7 @@ en:
       login: "Login"
       new_signup: "New Signup? Register for an Account"
       login_to_your_acc: "Login to your account"
+      sign_in_google: "Sign in with Google"
 
     login_form:
       login_now: "Login now"
@@ -141,4 +142,7 @@ en:
         delete: "Delete"
         datatable: "Data Table"
 
-
+  omniauth_callbacks:
+    create:
+      failed: Authentication failure"
+      success: "Sign in with %{s}"

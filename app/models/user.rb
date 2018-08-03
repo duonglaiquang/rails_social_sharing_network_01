@@ -31,6 +31,19 @@ class User < ApplicationRecord
   scope :search, -> (keyword) { where "email LIKE ? ", "%#{keyword}%" }
 
   class << self
+    def from_omniauth auth
+      where(provider: auth.provider,
+        uid: auth.uid).first_or_initialize.tap do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.email = auth.info.email
+        user.password = SecureRandom.hex(8) if user.new_record?
+        user.name = auth.info.name
+        user.save
+        user
+      end
+    end
+
     def digest string
       cost =
         if ActiveModel::SecurePassword.min_cost

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/search", to: "search#search"
+  get "auth/:provider/callback", to: "omniauth_callbacks#create"
+  get "auth/failure", to: "omniauth_callbacks#failure"
   resources :users
   resources :account_activations, only: :edit
   resources :password_resets, except: %i(index show destroy)
