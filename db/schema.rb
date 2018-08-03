@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.integer "blocked", default: 0
+    t.string "provider"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bio"

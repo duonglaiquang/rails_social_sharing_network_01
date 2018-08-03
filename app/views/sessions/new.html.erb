@@ -6,6 +6,7 @@
       <div class="accordion accordion-lg divcenter nobottommargin clearfix">
         <div class="acctitle"><i class="acc-closed icon-lock3"></i>
           <i class="acc-open icon-unlock"></i>
+          <br><%= link_to t(".sign_in_google"), "/auth/google_oauth2" %>
           <%= t ".login_to_your_acc" %></div>
         <div class="acc_content clearfix">
           <%= render "sessions/login_form" %>

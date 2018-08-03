@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :activation_digest
       t.boolean :activated, default: false
       t.integer :blocked, default: 0
+      t.string :provider
+      t.string :uid
       t.timestamps
     end
     add_index :users, [:email]
