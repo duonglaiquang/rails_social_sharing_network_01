@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  def new ;end
+  def new; end
 
   def create
     @user = User.find_by email: params[:session][:email].downcase
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     if user.activated?
       log_in user
       remember_user user
-      redirect_to user
+      redirect_back_or user
     else
       flash[:warning] = t "sessions.create.account_not_activated"
       redirect_to root_url

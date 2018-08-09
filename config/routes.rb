@@ -12,15 +12,19 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: :edit
   resources :password_resets, except: %i(index show destroy)
-  resources :posts, only: %i(create destroy)
+  resources :posts, only: %i(create show destroy)
   resources :users do
     member do
       get :following, :followers
     end
   end
-  resources :relationships, only: %i(create destroy)
+  resource :relationships, only: %i(create destroy)
+  resources :comments, except: %i(index)
+
   namespace :admin do
     resources :users, only: %i(index destroy)
     resources :posts, only: %i(index destroy)
   end
+
+  resources :tags, only: %i(show)
 end

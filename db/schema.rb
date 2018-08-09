@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_31_004431) do
+ActiveRecord::Schema.define(version: 2018_08_03_083218) do
 
   create_table "actions", force: :cascade do |t|
     t.string "target_type"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point", default: 0
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.string "video"
+    t.integer "point"
+    t.integer "upload_type", default: 0
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
   end
 
@@ -92,6 +95,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bio"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email"
   end
 
