@@ -114,8 +114,11 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
-  private
+  def correct_user? user
+    self == user
+  end
 
+  private
 
   def email_downcase
     email.downcase!

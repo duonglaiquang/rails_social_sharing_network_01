@@ -25,7 +25,7 @@
   </span>
   <span class="timestamp">
     <%= time_ago_in_words post.created_at %>
-    <% if @user.current_user? post.user %>
+    <% if can? :manage, post %>
       <%= link_to "delete", post, method: :delete,
         data:{confirm: t(".you_sure")}%>
     <% end %>

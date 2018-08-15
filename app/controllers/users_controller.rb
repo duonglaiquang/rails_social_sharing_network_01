@@ -46,11 +46,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password, :bio,
-                                 :password_confirmation
+      :password_confirmation
   end
 
   def correct_user
-    redirect_to home_path unless @user.current_user? current_user
+    redirect_to root_path unless current_user.correct_user? @user
   end
 
 end
