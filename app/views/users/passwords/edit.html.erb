@@ -1,0 +1,37 @@
+<% provide :title, t("password_resets.edit.reset_password") %>
+<% provide :name, t("password_resets.edit.reset_password") %>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <br/>
+        <div class="clearfix">
+          <%= form_for(resource, as: resource_name,
+            url: password_path(resource_name), html: {method: :put}) do |f| %>
+            <%= devise_error_messages! %>
+            <%= f.hidden_field :reset_password_token %>
+
+            <div class="col-full">
+              <%= f.label :password, "New password" %><br/>
+              <%= f.password_field :password, class: "form-control",
+                autofocus: true, autocomplete: "off" %>
+            </div>
+
+            <div class="col-full">
+              <%= f.label :password_confirmation, "Confirm new password" %>
+              <br/>
+              <%= f.password_field :password_confirmation,
+                class: "form-control", autocomplete: "off" %>
+            </div>
+
+            <div class="col_full nobottommargin">
+              <%= f.submit "Change my password",
+                class: "button button-3d button-black nomargin" %>
+            </div>
+          <% end %>
+        </div>
+        <%= render "shared/links" %>
+      </div>
+    </div>
+  </div>
+</section>

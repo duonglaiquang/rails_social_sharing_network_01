@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_title yield :title %></title>
+  <title><%= full_title yield (:title) %></title>
   <%= render "layouts/rails_default" %>
 </head>
 
 <body>
 <%= render "layouts/header" %>
 <div class="stretched">
-
   <section id="page-title">
     <div class="container clearfix">
-      <h1><%= full_title yield :name %></h1>
+      <h1><%= full_title yield (:name) %></h1>
     </div>
   </section>
-
   <% flash.each do |message_type, message| %>
     <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
   <% end %>

@@ -1,24 +1,34 @@
 <div class="modal fade upload" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-sm">
     <div class="modal-body">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel"><%= t "application.upload" %></h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
           <%= form_for post do |f| %>
             <%= render "shared/error_messages", object: f.object %>
             <div class="field">
-              <%= f.text_area :content, placeholder: t(".compose_new_post") %>
+              <%= f.text_area :title, placeholder: t(".compose_new_post"),
+                class: "form-control" %>
             </div>
-            <span class="picture">
+            <span>
+              <%= f.radio_button :upload_type, "pic" %> <%= t "upload.picture" %>
+            </span>
+            <span>
+              <%= f.radio_button :upload_type, "vid" %> <%= t "upload.video" %>
+              <br/>
+            </span>
+            <span class="pic-form hide">
               <%= f.file_field :picture %>
             </span>
-            <p><%= t ".video" %></p>
-            <%= f.file_field :video, id: "video_here" %>
-            <%= f.submit t(".post"), class: "btn btn-primary" %>
+            <span class="vid-form hide">
+              <%= f.file_field :video, id: "video_here" %>
+            </span><br/>
+            <%= f.submit t(".post"), class: "btn btn-primary up" %>
           <% end %>
         </div>
       </div>

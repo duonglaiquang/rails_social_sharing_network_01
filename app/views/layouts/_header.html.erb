@@ -4,19 +4,19 @@
       <div class="container clearfix">
         <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
         <div id="logo">
+          <%image_tag "logo.png" %>
         </div>
 
         <nav id="primary-menu">
           <ul>
-            <%= form_with url: search_path, local: true do |f|%>
-              <%= f.text_field :q, type: "search", data: {behavior: "autocomplete"},
-                placeholder: t(".search") %>
-            <% end %>
-            <li class="mega-menu">
-              <%= link_to t("application.hot"), home_path %>
+            <li>
+              <%= form_with url: search_path, local: true do |f| %>
+                <%= f.text_field :q, type: "search", data: {behavior: "autocomplete"},
+                  placeholder: "Search", class: "form-control" %>
+              <% end %>
             </li>
             <li class="mega-menu">
-              <%= link_to t("application.trending"), home_path %>
+              <%= link_to t("application.hot"), home_path %>
             </li>
             <li class="mega-menu">
               <%= link_to t("application.fresh"), home_path %>
@@ -25,7 +25,7 @@
               <%= link_to t("application.users"), users_path %>
             </li>
           </ul>
-          <% if logged_in? %>
+          <% if user_signed_in? %>
             <div id="top-account" class="dropdown">
               <%= link_to "#", class: "btn btn-secondary btn-sm dropdown-toggle",
                 "data-toggle": "dropdown" do %>
@@ -33,13 +33,9 @@
               <% end %>
               <ul class="dropdown-menu dropdown-menu-right">
                 <%= link_to t("application.profile"), current_user, class: "dropdown-item tleft" %>
-                <%= link_to "#", class: "dropdown-item tleft" do %>
-                  <%= t "application.message" %>
-                  <span class="badge badge-pill badge-secondary fright">5</span>
-                <% end %>
-                <%= link_to t("application.setting"), edit_user_path(current_user),
+                <%= link_to t("application.setting"), edit_user_registration_path,
                   class: "dropdown-item tleft" %>
-                <%= link_to logout_path, method: :delete,
+                <%= link_to destroy_user_session_path, method: :delete,
                   class: "dropdown-item tleft" do %>
                   <%= t "application.logout" %>
                   <i class="icon-signout"></i>
@@ -54,7 +50,7 @@
           <% else %>
             <ul>
               <li class="mega-menu">
-                <%= link_to t("sessions.new.login"), login_path %>
+                <%= link_to t("sessions.new.login"), new_user_session_path %>
               </li>
             </ul>
           <% end %>
