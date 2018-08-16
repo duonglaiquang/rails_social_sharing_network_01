@@ -26,6 +26,9 @@ gem "sass-rails", "~> 5.0"
 gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "omniauth-google-oauth2"
+gem "cancancan"
+gem "ransack"
 
 group :development, :test do
   gem "pry-rails"

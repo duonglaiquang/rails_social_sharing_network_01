@@ -9,8 +9,6 @@ class Post < ApplicationRecord
   has_many :votes, as: :target, class_name: Action.name
   after_commit :upload_sidekiq, on: :create
 
-  scope :search, -> (keyword) { where "title LIKE ? ", "%#{keyword}%" }
-
   private
 
   def upload_sidekiq

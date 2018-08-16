@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   validates :password, allow_nil: true, presence: true,
             length: {minimum: Settings.min_password}
-  
+
   class << self
     def from_omniauth auth
       where(provider: auth.provider,
