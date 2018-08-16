@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_31_004431) do
+ActiveRecord::Schema.define(version: 2018_08_16_012212) do
 
   create_table "actions", force: :cascade do |t|
     t.string "target_type"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point", default: 0
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.string "video"
+    t.integer "point"
+    t.integer "upload_type", default: 0
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
   end
 
@@ -80,11 +83,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_digest"
-    t.string "remember_digest"
     t.boolean "admin", default: false
-    t.string "reset_digest"
-    t.string "activation_digest"
     t.boolean "activated", default: false
     t.integer "blocked", default: 0
     t.string "provider"
@@ -92,7 +91,22 @@ ActiveRecord::Schema.define(version: 2018_07_31_004431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bio"
+    t.string "avatar"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
 end
