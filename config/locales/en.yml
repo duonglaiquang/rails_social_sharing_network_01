@@ -5,13 +5,12 @@ en:
   user_not_found: "User not found"
   please_login: "You are not logged in"
   sure: "Sure"
-  home: "Home"
   shortcode: "ShortCodes"
   datatable: "Data Table"
+  confirmation: "Confirmation"
+  signup: "Sign up"
 
   layouts:
-    header:
-      search: "Search"
     modal:
       post: "Post"
       compose_new_post: "Compose new post..."
@@ -19,11 +18,11 @@ en:
   activerecord:
     models:
       user:
-        name: "Name"
-        re_enter_pass: "Re-enter Password"
-        email: "Email Address"
-        password: "Password"
-        bio: "About me"
+#        name: "Name"
+#        password_confirmation: "Re-enter Password"
+#        email: "Email Address"
+#        password: "Password"
+#        bio: "About me"
 
   application:
     hot: "Hot"
@@ -37,8 +36,10 @@ en:
     upload: "UPLOAD"
     users: "Users"
     leaderboard: "Leaderboard"
+    tagcloud: "Tag Cloud"
 
   home:
+    title: "Home"
     favor_tag: "Favorite Tags"
     tag_cloud: "Tag Cloud"
     followed_feed: "Followed Feed"
@@ -50,6 +51,9 @@ en:
       post_create_failed: "Post create failed"
     destroy:
       post_deleted : "Post deleted!"
+    point: "Point"
+    comment: "Comment"
+    cmt-title: "Leave a "
   users:
     new:
       login: "login"
@@ -67,6 +71,9 @@ en:
 
     edit:
       info: "Edit account details"
+      edit_pw_blank: "leave blank if you don't want to change it"
+      current_pw_needed: "we need your current password to confirm your changes"
+      cancel: "Cancel my account"
 
   relationships:
     follow: "Follow"
@@ -82,7 +89,7 @@ en:
       login: "Login"
       new_signup: "New Signup? Register for an Account"
       login_to_your_acc: "Login to your account"
-      sign_in_google: "Sign in with Google"
+      sign_in_google: "or Sign in with Google"
 
     login_form:
       login_now: "Login now"
@@ -102,8 +109,11 @@ en:
   account_activations:
     account_activated: "Account activated!"
     invalid_activation: "Invalid activation link"
+    waiting: "Currently waiting confirmation for:"
 
   user_mailer:
+    confirm_my_acc: "Confirm my account"
+    pw_changed: "We're contacting you to notify you that your password has been changed."
     account_activation:
       account_activation: "Account activation"
       activate: "Active"
@@ -144,5 +154,9 @@ en:
 
   omniauth_callbacks:
     create:
-      failed: Authentication failure"
+      failed: "Authentication failure"
       success: "Sign in with %{s}"
+
+  upload:
+    picture: "Picture"
+    video: "Video"
