@@ -1,0 +1,49 @@
+<% provide :title, t("devise.registrations.signed_up") %>
+<% provide :name, t("devise.registrations.signed_up") %>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <div class="acctitle">
+          <i class="acc-closed icon-user4"></i>
+          <i class="acc-open icon-ok-sign"></i>
+          <%= t "sessions.new.new_signup" %>
+        </div>
+        <div class="clearfix">
+          <%= form_for(resource, as: resource_name,
+            url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="col_full">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control", autofocus: true %>
+            </div>
+
+            <div class="col_full">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: "form-control", autofocus: true,
+                autocomplete: "email" %>
+            </div>
+
+            <div class="col_full">
+              <%= f.label :password %>
+              <%= f.password_field :password, class: "form-control",
+                autocomplete: "off" %>
+            </div>
+
+            <div class="col_full">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, class: "form-control",
+                autocomplete: "off" %>
+            </div>
+
+            <div class="col_full nobottommargin">
+              <%= f.submit "Sign up", class: "button button-3d button-black nomargin" %>
+            </div>
+          <% end %>
+        </div>
+        <%= render "shared/links" %>
+      </div>
+    </div>
+  </div>
+</section>

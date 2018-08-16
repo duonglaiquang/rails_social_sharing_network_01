@@ -1,0 +1,28 @@
+<% provide :title, t("password_resets.new.forgot") %>
+<% provide :name, t("password_resets.new.forgot") %>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <div class="clearfix">
+          <%= form_for(resource, as: resource_name,
+            url: password_path(resource_name), html: {method: :post}) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="col-full">
+              <%= f.label :email %><br/>
+              <%= f.email_field :email, class: "form-control", autofocus: true,
+                autocomplete: "email" %>
+            </div>
+            <br/>
+            <div class="actions">
+              <%= f.submit "Reset", class: "button button-3d button-black nomargin" %>
+            </div>
+          <% end %>
+
+        </div>
+        <%= render "shared/links" %>
+      </div>
+    </div>
+  </div>
+</section>

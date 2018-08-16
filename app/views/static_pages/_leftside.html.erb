@@ -1,28 +1,8 @@
 <div class="sidebar-widgets-wrap">
-  <div class="widget clearfix">
-    <h4><%= t "home.favor_tag" %></h4>
-    <div class="tagcloud">
-      <%= link_to "Videos", "#" %>
-      <%= link_to "Games", "#" %>
-      <%= link_to "Manga", "#" %>
-      <%= link_to "Anime", "#" %>
-    </div>
-  </div>
-  <div class="widget clearfix">
+  <div class="tagcloud">
     <h4><%= t "home.tag_cloud" %></h4>
-    <div class="tagcloud">
-      <%= link_to "Videos", "#" %>
-      <%= link_to "Games", "#" %>
-      <%= link_to "Manga", "#" %>
-      <%= link_to "Anime", "#" %>
-      <%= link_to "Videos", "#" %>
-      <%= link_to "Games", "#" %>
-      <%= link_to "Manga", "#" %>
-      <%= link_to "Anime", "#" %>
-      <%= link_to "Videos", "#" %>
-      <%= link_to "Games", "#" %>
-      <%= link_to "Manga", "#" %>
-      <%= link_to "Anime", "#" %>
-    </div>
+    <% Tag.all.each do |f| %>
+      <%= link_to f.name, f %>
+    <% end %>
   </div>
 </div>

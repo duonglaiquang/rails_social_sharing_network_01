@@ -1,0 +1,36 @@
+<% provide :title, t("confirmation") %>
+<% provide :name, t("confirmation") %>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <div class="acctitle">
+          <i class="acc-closed icon-user4"></i>
+          <i class="acc-open icon-ok-sign"></i>
+          <%= t "devise.confirmations.send_instructions" %>
+        </div>
+        <div class="clearfix">
+          <%= form_for(resource, as: resource_name,
+            url: confirmation_path(resource_name),
+            html: {method: :post}) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="col-full">
+              <%= f.label :email %><br/>
+              <%= f.email_field :email, class: "form-control",
+                autofocus: true, autocomplete: "email",
+                value: (resource.pending_reconfirmation? ?
+                resource.unconfirmed_email : resource.email) %>
+            </div>
+            <br/>
+            <div class="col_full nobottommargin">
+              <%= f.submit t("devise.confirmations.send_instructions"),
+                class: "button button-3d button-black nomargin" %>
+            </div>
+          <% end %>
+        </div>
+        <%= render "shared/links" %>
+      </div>
+    </div>
+  </div>
+</section>

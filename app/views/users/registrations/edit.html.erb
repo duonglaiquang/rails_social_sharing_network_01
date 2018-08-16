@@ -1,0 +1,65 @@
+<% provide :title, t("application.setting") %>
+<% provide :name, t("application.setting") %>
+
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="accordion accordion-lg divcenter nobottommargin clearfix">
+        <div class="acctitle">
+          <i class="acc-closed icon-user4"></i>
+          <i class="acc-open icon-ok-sign"></i>
+          <%= t "users.edit.info" %>
+        </div>
+        <div class="acc_content clearfix">
+          <%= form_for(resource, as: resource_name,
+            url: registration_path(resource_name), html: {method: :put}) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="col_full">
+              <%= f.label :bio %>
+              <%= f.text_area :bio, class: "form-control", rows: 6, autofocus: true %>
+            </div>
+
+            <div class="col_full">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: "form-control", autofocus: true,
+                autocomplete: "email", readonly: true %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div><%= t "account_activations.waiting" %>
+                <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class="col_full">
+              <%= f.label :password %>
+              <i>(<%= t "users.edit.edit_pw_blank" %>)</i><br/>
+              <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+            </div>
+
+            <div class="col_full">
+              <%= f.label :password_confirmation %><br/>
+              <%= f.password_field :password_confirmation, class: "form-control",
+                autocomplete: "off" %>
+            </div>
+
+            <div class="col_full">
+              <%= f.label :current_password %>
+              <i>(<%= t "users.edit.current_pw_needed" %>)</i><br/>
+              <%= f.password_field :current_password, class: "form-control",
+                autocomplete: "off" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Update", class: "button button-3d button-black nomargin" %>
+            </div>
+          <% end %>
+
+          <%= button_to t("users.edit.cancel"), registration_path(resource_name),
+            data: {confirm: "Are you sure?"}, method: :delete,
+            class: "button button-3d button-black nomargin" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

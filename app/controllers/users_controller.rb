@@ -7,22 +7,6 @@ class UsersController < ApplicationController
     @users = User.order(:name).page(params[:page]).per Settings.pagnation
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new user_params
-    if @user.save
-      @user.send_activation_email
-      flash[:info] = t ".please_check_mail"
-      redirect_to root_url
-    else
-      flash[:danger] = t "error"
-      render :new
-    end
-  end
-
   def show
     @posts = @user.posts
     @followings = @user.following
@@ -52,5 +36,4 @@ class UsersController < ApplicationController
   def correct_user
     redirect_to root_path unless current_user.correct_user? @user
   end
-
 end
