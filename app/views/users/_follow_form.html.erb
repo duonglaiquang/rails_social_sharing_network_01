@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
   <div id="follow_form-<%= user.id %>">
     <% unless user.current_user? current_user %>
       <% if current_user.following? user %>

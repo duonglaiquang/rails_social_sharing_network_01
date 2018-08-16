@@ -1,0 +1,13 @@
+<%= form_for :comment, url: comments_path, class: "clearfix", id: "commentform",
+  remote: true do |f| %>
+  <div class="col_full">
+    <%= f.text_area :content, class: "sm-form-control", rows: 3 %>
+  </div>
+  <%= hidden_field_tag :post_id, @post.id %>
+  <% if defined?(parent) %>
+    <%= hidden_field_tag :parent_id, parent.id %>
+  <% end %>
+  <div class="col_full nobottommargin">
+    <%= f.submit t("password_resets.new.submit"), class: "button button-3d nomargin", id: "submit-button" %>
+  </div>
+<% end %>

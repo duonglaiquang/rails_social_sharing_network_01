@@ -1,0 +1,3 @@
+$(".commentlist").html("<%= j render @comments %>").appendTo(".commentlist");
+$("#comments-count").html("<%= @post.comments.count %>")
+bindEvent();

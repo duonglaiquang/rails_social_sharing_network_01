@@ -1,0 +1,102 @@
+<% provide :title, @post.title %>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container" id="post">
+      <div class="sidebar nobottommargin clearfix">
+        <div class="sidebar-widgets-wrap">
+          <%= render "static_pages/leftside" %>
+        </div>
+      </div>
+      <div class="postcontent nobottommargin clearfix post">
+        <div class="single-post nobottommargin">
+
+          <div class="entry clearfix">
+
+            <div class="entry-title">
+              <h2><%= @post.title %></h2>
+            </div>
+            <ul class="entry-meta clearfix post-info">
+              <li class="point">
+                <%= link_to "Posted by " + @post.user.name, @post.user %>
+              </li>
+              <li><i class="icon-calendar3"></i><%= @post.created_at %></li>
+            </ul>
+
+            <% if @post[:upload_type] == "seed" %>
+              <div class="entry-image">
+                <%= image_tag @post.content %>
+              </div>
+            <% elsif @post[:upload_type] == "picture" %>
+              <div class="entry-image">
+                <% if @post[:picture].length < Settings.length_picture_name %>
+                  <%= image_tag @post.picture.url %>
+                <% else %>
+                  <% post_image = post_image_id @post %>
+                  <% if post_image.last == "gif" %>
+                    <% post_gif_video_link = change_gif_link_to_mp4 @post %>
+                    <%= cl_video_tag post_gif_video_link, controls: true %>
+                  <% else %>
+                    <%= cl_image_tag post_image.first %>
+                  <% end %>
+                <% end %>
+              </div>
+
+            <% else %>
+              <div class="entry-image">
+                <% if @post[:video].length < Settings.length_video_name %>
+                  <%= video_tag @post.video.url, controls: true %>
+                <% else %>
+                  <%= cl_video_tag post_video_id(@post).to_s, controls: true %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+          <ul class="entry-meta clearfix post-info">
+            <li>
+              <%= link_to "#" do %>
+                <i class="icon-like"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="icon-line2-dislike"></i>
+              <% end %>
+            </li>
+            <li>
+              <span><i class="icon-comments"></i>
+                <%= @post.comments.count %></span>
+            </li>
+            <li class="point">
+              <span><%= @post.point %> <%= t "posts.point" %>></span>
+            </li>
+          </ul>
+
+          <div id="respond" class="clearfix">
+            <h3><%= t "posts.cmt-title" %><span><%= t "posts.comment" %></span>
+            </h3>
+            <%= render "comments/form" %>
+          </div>
+          <div class="clear"></div>
+
+          <div id="comments" class="clearfix">
+            <h3 id="comments-title">
+              <span id="comments-count"><%= @post.comments.count %></span>
+              <%= t "posts.comment" %></h3>
+
+            <ol class="commentlist clearfix">
+              <%= render @comments %>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+      <div class="sidebar nobottommargin col_last clearfix">
+        <div class="sidebar-widgets-wrap">
+          <div class="widget clearfix">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
