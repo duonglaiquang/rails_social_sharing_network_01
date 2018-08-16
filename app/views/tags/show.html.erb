@@ -1,0 +1,27 @@
+<% provide :title, @tag.name %>
+<% provide :name, @tag.name %>
+
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="sidebar nobottommargin clearfix">
+        <%= render "static_pages/leftside" %>
+      </div>
+
+      <div class="postcontent bothsidebar nobottommargin clearfix">
+        <%= render @posts %>
+        <div class="row mb-3">
+          <div class="col-lg-12">
+            <%= paginate @posts %>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar nobottommargin col_last clearfix">
+        <div class="sidebar-widgets-wrap">
+          <%= render "static_pages/rightside" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

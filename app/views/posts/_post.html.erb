@@ -1,33 +1,60 @@
-<li id="post-<%= post.id %>">
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content">
-    <%= post.content %>
-    <% if post[:picture].present? %>
-      <% if post[:picture].length < Settings.length_picture_name %>
-        <%= image_tag post.picture.url %>
-      <% else %>
-        <% post_image = post_image_id post %>
-        <% if post_image.last == "gif" %>
-          <% post_gif_video_link = change_gif_link_to_mp4 post %>
-          <%= cl_video_tag post_gif_video_link, controls: true %>
+<div id="posts">
+  <div class="entry clearfix">
+    <div class="entry-title">
+      <h2><%= link_to post.title, post %></h2>
+    </div>
+    <% if post[:upload_type] == "seed" %>
+      <div class="entry-image">
+        <%= image_tag post.content %>
+      </div>
+    <% elsif post[:upload_type] == "picture" %>
+      <div class="entry-image">
+        <% if post[:picture].length < Settings.length_picture_name %>
+          <%= image_tag post.picture.url %>
         <% else %>
-          <%= cl_image_tag post_image.first %>
+          <% post_image = post_image_id post %>
+          <% if post_image.last == "gif" %>
+            <% post_gif_video_link = change_gif_link_to_mp4 post %>
+            <%= cl_video_tag post_gif_video_link, controls: true %>
+          <% else %>
+            <%= cl_image_tag post_image.first %>
+          <% end %>
         <% end %>
+      </div>
+    <% else %>
+      <div class="entry-image">
+        <% if post[:video].length < Settings.length_video_name %>
+          <%= video_tag post.video.url, controls: true %>
+        <% else %>
+          <%= cl_video_tag post_video_id(post).to_s, controls: true %>
+        <% end %>
+      </div>
+    <% end %>
+    <ul class="entry-meta clearfix post-info">
+      <li>
+        <%= link_to "#" do %>
+          <i class="icon-like"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#" do %>
+          <i class="icon-line2-dislike"></i>
+        <% end %>
+      </li>
+      <li>
+        <span>
+          <i class="icon-comments"></i>
+          <%= post.comments.count %>
+        </span>
+      </li>
+      <li class="point">
+        <span><%= post.point %> <%= t "posts.point" %></span>
+      </li>
+      <% if post.tag.present? %>
+        <li class="point">
+          <%= link_to "#" + post.tag.name, "#", class: "tagcloud" %>
+        </li>
       <% end %>
-    <% end %>
-    <% if post[:video].present? %>
-      <% if post[:video].length < Settings.length_video_name %>
-        <%= video_tag post.video.url, controls: true %>
-      <% else %>
-        <%= cl_video_tag post_video_id(post).to_s, controls: true %>
-      <% end %>
-    <% end %>
-  </span>
-  <span class="timestamp">
-    <%= time_ago_in_words post.created_at %>
-    <% if can? :manage, post %>
-      <%= link_to "delete", post, method: :delete,
-        data:{confirm: t(".you_sure")}%>
-    <% end %>
-  </span>
-</li>
+    </ul>
+  </div>
+</div>
