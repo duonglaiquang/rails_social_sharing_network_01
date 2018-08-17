@@ -34,6 +34,6 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    redirect_to root_path unless current_user.correct_user? @user
+    redirect_to home_path unless @user.current_user? current_user
   end
 end

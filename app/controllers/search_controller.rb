@@ -17,5 +17,4 @@ class SearchController < ApplicationController
     @posts = Post.search(name_cont: q).result
     @users = User.search(email_cont: q).result
   end
-
 end

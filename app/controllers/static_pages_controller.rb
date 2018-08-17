@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @post = current_user.posts.build if logged_in?
+    @posts = Post.order(point: :desc).page(params[:page]).per Settings.pagnation
   end
 end
