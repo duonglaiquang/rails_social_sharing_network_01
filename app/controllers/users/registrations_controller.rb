@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     return unless resource
+    resource.avatar = Faker::Avatar.image
     resource.save
   end
 

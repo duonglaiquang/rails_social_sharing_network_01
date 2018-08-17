@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < ApplicationController
-
   def create
     auth = request.env["omniauth.auth"]
     @user = User.from_omniauth auth

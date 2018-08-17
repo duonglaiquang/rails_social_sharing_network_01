@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
   before_action :new_post
-  include SessionsHelper
 
   def default_url_options
     {locale: I18n.locale}
@@ -15,10 +14,9 @@ class ApplicationController < ActionController::Base
   private
 
   def logged_in_user
-    return if logged_in?
-    store_location
+    return if user_signed_in?
     flash[:danger] = t "please_login"
-    redirect_to login_path
+    redirect_to new_user_session_path
   end
 
   def new_post
