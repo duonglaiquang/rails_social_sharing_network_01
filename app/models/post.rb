@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   mount_uploader :video, VideoUploader
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :votes, as: :target, class_name: Action.name
+  has_many :likes, dependent: :destroy
   # after_commit :upload_sidekiq, on: :create
 
   private

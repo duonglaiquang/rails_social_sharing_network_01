@@ -1,0 +1,5 @@
+<% if @type == 1 %>
+$("#point-<%= @post.id %>").html("<%= @post.point %> <%= t "posts.point" %>")
+<% elsif @type == 0%>
+$("#label-point-<%= @comment.id %>").html("<%= @comment.point.to_s + " point" %>")
+<% end %>

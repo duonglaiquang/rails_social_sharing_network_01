@@ -129,7 +129,7 @@ p {
   margin-top: 4px !important;
 }
 
-.reply-form {
+.reply-form, .reply-to {
   display: none;
   margin: 30px 0 0 30px;
 }
@@ -162,4 +162,62 @@ p {
 #primary-menu form {
   margin-top: 30px;
   margin-bottom: 0 !important;
+}
+
+.button-like {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+.comment-wrap {
+  border: 1px solid #c3b8b8;
+}
+
+.comment-avatar {
+  border: 1px solid #c3b8b8;
+}
+
+.comment-label {
+  padding-left: 15px;
+}
+
+.likeform {
+  float: left !important;
+  padding-right: 15px !important;
+  margin-bottom: 0;
+}
+
+.green {
+  color: green;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+#logo1 {
+  float: left;
+  font-size: 15px;
+  padding-top: 16px;
+  margin-left: -170px;
+  color: green;
+  width: 65px;
+}
+
+#page_title {
+  float: left;
+  font-size: 30px;
+  color: green;
+  font-weight: bold;
+  padding-top: 30px;
+  margin-left: -90px;
+}
+
+.social-share-button {
+  margin-top: -17px;
+  margin-left: 20px;
 }

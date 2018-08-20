@@ -22,6 +22,15 @@
               <div class="tabs tabs-alt clearfix" id="tabs-profile">
 
                 <ul class="tab-nav clearfix">
+                  <% if @user.id == current_user.id %>
+                  <li>
+                    <%= link_to "#tab-feeds" do %>
+                      <i class="icon-pencil2"></i>
+                      Feed
+                    <% end %>
+                  </li>
+                  <% end %>
+
                   <li>
                     <%= link_to "#tab-posts" do %>
                       <i class="icon-pencil2"></i>
@@ -54,6 +63,16 @@
                 </ul>
 
                 <div class="tab-container">
+
+                  <div class="tab-content clearfix" id="tab-feeds">
+                    <div class="col-md-8">
+                      <% if @posts_feed.any? %>
+                        <% @posts_feed.each do |f| %>
+                          <%= render "posts/feed", post: f %>
+                          <% end %>
+                      <% end %>
+                    </div>
+                  </div>
 
                   <div class="tab-content clearfix" id="tab-posts">
                     <div class="col-md-8">

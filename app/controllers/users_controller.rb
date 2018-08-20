@@ -4,13 +4,26 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(edit update)
 
   def index
-    @users = User.order(:name).page(params[:page]).per Settings.pagnation
+    User.all.each do |f|
+      f.point = 0
+      f.posts.each do |t|
+        f.point += t.point
+      end
+      f.save
+    end
+    @users = User.order(point: :desc).page(params[:page]).per Settings.pagnation
   end
 
   def show
     @posts = @user.posts
     @followings = @user.following
     @followers = @user.followers
+    @posts_feed = @posts
+    if @followings.any?
+      @followings.each do |f|
+        @posts_feed += f.posts
+      end
+    end
     return if @user&.activated
     redirect_to root_path
   end
@@ -30,7 +43,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password, :bio,
-      :password_confirmation
+                                 :password_confirmation
   end
 
   def correct_user

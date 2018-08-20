@@ -1,4 +1,4 @@
-<li class="comment even thread-even depth-1" id="li-comment-<%= comment.id %>">
+<li class="comment even thread-even depth-1 reply-to-list" id="li-comment-<%= comment.id %>">
   <div id="comment-<%= comment.id %>" class="comment-wrap clearfix">
     <div class="comment-meta">
       <div class="comment-author vcard">
@@ -11,10 +11,36 @@
     <div class="comment-content clearfix">
       <div class="comment-author">
         <%= link_to comment.user.name, comment.user %>
-        <span><%= comment.created_at %></span>
+        <label class="comment-label" id="label-point-<%= comment.id %>"><%= comment.point.to_s + " point" %></label>
+        <label class="comment-label"><%= time_ago_in_words(comment.created_at) + " ago" %></label>
       </div>
-      <p><%= comment.content %></p>
+      <p><%= link_to "@" + comment.reply.user.name, comment.reply.user %>  <%= comment.content %></p><br/>
+      <%= form_for :like, url: likes_path, html: {class: "likeform"}, remote: true do |f| %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.hidden_field :comment_id, value: comment.id %>
+        <%= f.hidden_field :type_id, value: 0 %>
 
+        <% if user_signed_in? %>
+          <% liked = current_user.likes.select("comment_id").collect(&:comment_id) %>
+          <% if liked.include?(comment.id) %>
+            <%= button_tag(class: "button-like green") do %>
+              <strong class="cursor">Like</strong>
+            <% end %>
+          <% else %>
+            <%= button_tag(class: "button-like") do %>
+              <strong class="cursor">Like</strong>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= button_tag(class: "button-like") do %>
+            <strong class="cursor">Like</strong>
+          <% end %>
+        <% end %>
+
+      <% end %>
+      <%= content_tag "a", class: "reply" do %>
+        <strong style="cursor: pointer">Reply</strong>
+      <% end %>
       <% if comment.user.current_user? current_user %>
         <%= link_to comment, class: "comment-reply-link delete delete-reply",
           method: :delete, data: {confirm: t("are_u_sure")},
@@ -28,5 +54,9 @@
       <% end %>
     </div>
     <div class="clear"></div>
+  </div>
+
+  <div id="reply-to-<%= comment.id %>" class="clearfix reply-to">
+    <%= render "comments/form", parent: parent, reply: comment %>
   </div>
 </li>

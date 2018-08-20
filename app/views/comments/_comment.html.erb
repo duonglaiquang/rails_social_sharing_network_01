@@ -5,24 +5,46 @@
         <div class="comment-author vcard">
         <span class="comment-avatar clearfix">
           <%= image_tag comment.user.avatar, alt: "avatar.jpg",
-            class: "avatar avatar-60 photo avatar-default" %>
+                        class: "avatar avatar-60 photo avatar-default" %>
         </span>
         </div>
       </div>
       <div class="comment-content clearfix">
         <div class="comment-author">
           <%= link_to comment.user.name, comment.user %>
-          <span><%= comment.created_at %></span>
+          <label class="comment-label" id="label-point-<%= comment.id %>"><%= comment.point.to_s + " point" %></label>
+          <label class="comment-label"><%= time_ago_in_words(comment.created_at) + " ago" %></label>
         </div>
-        <p><%= comment.content %></p>
-        <%= content_tag "a", class: "comment-reply-link reply" do %>
-          <i class="icon-reply"></i>
+        <p><%= comment.content %></p><br/>
+        <%= form_for :like, url: likes_path, html: {class: "likeform"}, remote: true do |f| %>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <%= f.hidden_field :comment_id, value: comment.id %>
+          <%= f.hidden_field :type_id, value: 0 %>
+          <% if user_signed_in? %>
+            <% liked = current_user.likes.select("comment_id").collect(&:comment_id) %>
+            <% if liked.include?(comment.id) %>
+              <%= button_tag(class: "button-like green") do %>
+                <strong class="cursor">Like</strong>
+              <% end %>
+            <% else %>
+              <%= button_tag(class: "button-like") do %>
+                <strong class="cursor">Like</strong>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= button_tag(class: "button-like") do %>
+              <strong class="cursor">Like</strong>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= content_tag "a", class: "respond" do %>
+          <strong style="cursor: pointer">Reply</strong>
         <% end %>
 
         <% if comment.user.current_user? current_user %>
           <%= link_to comment, class: "comment-reply-link delete delete-comment",
-            method: :delete, data: {confirm: t("are_u_sure")},
-            remote: true do %>
+                      method: :delete, data: {confirm: t("are_u_sure")},
+                      remote: true do %>
             <i class="icon-asterisk"></i>
           <% end %>
 
@@ -33,15 +55,16 @@
       </div>
       <div class="clear"></div>
     </div>
+
+    <div id="respond" class="clearfix reply-form">
+      <%= render "comments/form", parent: comment, reply: comment %>
+    </div>
   </li>
 
   <ul class="children" id="reply-<%= comment.id %>">
-    <div id="respond" class="clearfix reply-form">
-      <%= render "comments/form", parent: comment %>
-    </div>
     <% @childs.each do |f| %>
       <% if f.parent_id == comment.id %>
-        <%= render "comments/child", comment: f %>
+        <%= render "comments/child", comment: f, parent: comment %>
       <% end %>
     <% end %>
   </ul>

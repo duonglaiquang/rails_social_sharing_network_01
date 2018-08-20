@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_012212) do
+ActiveRecord::Schema.define(version: 2018_08_20_040340) do
 
   create_table "actions", force: :cascade do |t|
     t.string "target_type"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2018_08_16_012212) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "point", default: 0
+    t.integer "reply_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -53,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_08_16_012212) do
     t.string "video"
     t.integer "point"
     t.integer "upload_type", default: 0
+    t.string "slug"
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
   end
 
@@ -103,6 +114,8 @@ ActiveRecord::Schema.define(version: 2018_08_16_012212) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.integer "point"
+    t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

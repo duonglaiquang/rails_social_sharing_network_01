@@ -3,16 +3,18 @@
     <div id="header-wrap">
       <div class="container clearfix">
         <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-        <div id="logo">
-          <%image_tag "logo.png" %>
-        </div>
-
+        <%= link_to root_path do %>
+          <div id="logo1">
+            <%= image_tag "logo1.png" %>
+          </div>
+          <span id="page_title">SHARING NETWORK</span>
+        <% end %>
         <nav id="primary-menu">
           <ul>
             <li>
               <%= form_with url: search_path, local: true do |f| %>
                 <%= f.text_field :q, type: "search", data: {behavior: "autocomplete"},
-                  placeholder: "Search", class: "form-control" %>
+                                 placeholder: "Search", class: "form-control" %>
               <% end %>
             </li>
             <li class="mega-menu">
@@ -28,21 +30,21 @@
           <% if user_signed_in? %>
             <div id="top-account" class="dropdown">
               <%= link_to "#", class: "btn btn-secondary btn-sm dropdown-toggle",
-                "data-toggle": "dropdown" do %>
+                          "data-toggle": "dropdown" do %>
                 <i class="icon-user"></i>
               <% end %>
               <ul class="dropdown-menu dropdown-menu-right">
                 <%= link_to t("application.profile"), current_user, class: "dropdown-item tleft" %>
                 <%= link_to t("application.setting"), edit_user_registration_path,
-                  class: "dropdown-item tleft" %>
+                            class: "dropdown-item tleft" %>
                 <%= link_to destroy_user_session_path, method: :delete,
-                  class: "dropdown-item tleft" do %>
+                            class: "dropdown-item tleft" do %>
                   <%= t "application.logout" %>
                   <i class="icon-signout"></i>
                 <% end %>
               </ul>
               <%= link_to "#", class: "btn btn-sm button-green",
-                "data-toggle": "modal", "data-target": ".upload" do %>
+                          "data-toggle": "modal", "data-target": ".upload" do %>
                 <%= t "application.upload" %>
                 <i class="icon-plus"></i>
               <% end %>

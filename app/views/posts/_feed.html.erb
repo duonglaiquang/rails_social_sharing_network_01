@@ -1,5 +1,6 @@
 <div id="posts">
   <div class="entry clearfix">
+    <%= link_to post.user.name, post.user %> has posted <%= time_ago_in_words(post.created_at) + " ago" %>
     <div class="entry-title">
       <h2><%= link_to post.title, post %></h2>
     </div>
@@ -35,14 +36,10 @@
         <%= form_for :like, url: likes_path, id: "likeform", remote: true do |f| %>
           <%= f.hidden_field :post_id, value: post.id %>
           <%= f.hidden_field :type_id, value: 1 %>
-          <%= button_tag(class: "button-like") do %>
-            <% if user_signed_in? %>
-              <% liked = current_user.likes.select("post_id").collect(&:post_id) %>
-              <% if liked.include?(@post.id) %>
-                <i class="icon-like green"></i>
-              <% else %>
-                <i class="icon-like"></i>
-              <% end %>
+          <%= button_tag( class: "button-like" ) do %>
+            <% liked = current_user.likes.select("post_id").collect(&:post_id) %>
+            <% if liked.include?(@post.id) %>
+              <i class="icon-like green"></i>
             <% else %>
               <i class="icon-like"></i>
             <% end %>
@@ -63,9 +60,6 @@
           <%= link_to "#" + post.tag.name, "#", class: "tagcloud" %>
         </li>
       <% end %>
-      <li class="point">
-        <%= social_share_button_tag('Share to Facebook', :url => post_path(post.id), desc: post.title) %>
-      </li>
     </ul>
   </div>
 </div>

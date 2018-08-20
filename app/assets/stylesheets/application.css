@@ -16,8 +16,9 @@
  *= require style
  *= require bootstrap
  *= require animate
- *= require_tree .
- *= require_self
+ *= require social-share-button
  *= require easy-autocomplete
  *= require easy-autocomplete.themes
+  *= require_tree .
+ *= require_self
  */

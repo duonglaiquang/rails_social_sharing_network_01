@@ -1,6 +1,8 @@
 //= require rails-ujs
 //= require jquery
 //= require activestorage
+//= require social-share-button
+//= require jquery.easy-autocomplete
 //= require functions
 //= require plugins
 //= require turbolinks

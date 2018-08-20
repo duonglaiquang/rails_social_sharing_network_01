@@ -34,7 +34,7 @@ followers.each {|follower| follower.follow(user)}
   Tag.create!(name: name)
 end
 
-50.times do
+25.times do
   title = Faker::Movie.quote
   content = Faker::Avatar.image
   user_id = Faker::Number.between(1, 50)
@@ -50,7 +50,7 @@ end
                tag_id: tag_id)
 end
 
-200.times do
+100.times do
   content = Faker::Lorem.paragraph
   user_id = Faker::Number.between(1, 50)
   post_id = Faker::Number.between(1, 20)
@@ -71,6 +71,7 @@ Post.all.each do |f|
                       user_id: user_id,
                       post_id: f.id,
                       parent_id: t.id,
+                      reply_id: t.id,
                       point: point)
     end
   end

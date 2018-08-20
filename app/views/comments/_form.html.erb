@@ -1,13 +1,16 @@
-<%= form_for :comment, url: comments_path, class: "clearfix", id: "commentform",
+<%= form_for :comment, url: comments_path, html: {class: "clearfix commentform", id: "commentform"},
   remote: true do |f| %>
   <div class="col_full">
-    <%= f.text_area :content, class: "sm-form-control", rows: 3 %>
+    <%= f.text_area :content, class: "sm-form-control comment-text", rows: 3 %>
   </div>
   <%= f.hidden_field :post_id, value: @post.id %>
   <% if defined?(parent) %>
     <%= f.hidden_field :parent_id, value: parent.id %>
   <% end %>
+  <% if defined?(reply) %>
+    <%= f.hidden_field :reply_id, value: reply.id %>
+  <% end %>
   <div class="col_full nobottommargin">
-    <%= f.submit t("password_resets.new.submit"), class: "button button-3d nomargin", id: "submit-button" %>
+    <%= f.submit t("password_resets.new.submit"), class: "button button-3d nomargin submit-button", id: "submit-button" %>
   </div>
 <% end %>

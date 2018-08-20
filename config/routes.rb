@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   get "/search", to: "search#search"
   get "auth/:provider/callback", to: "omniauth_callbacks#create"
   get "auth/failure", to: "omniauth_callbacks#failure"
-  resources :users
-  resources :account_activations, only: :edit
-  resources :password_resets, except: %i(index show destroy)
   resources :posts, only: %i(create show destroy)
   resources :users do
     member do
@@ -26,4 +23,5 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: %i(show)
+  resources :likes, only: %i(create destroy)
 end

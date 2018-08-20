@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       @comments = @post.comments.parent_nil.order_by_created_at
       @childs = @post.comments - @comments
       respond_to do |format|
-        format.html {redirect_to @post}
+        format.html{redirect_to @post}
         format.js
       end
     else
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       @childs.destroy if @childs.present?
       respond_to do |format|
-        format.html {redirect_to @post}
+        format.html{redirect_to @post}
         format.js
       end
     else
@@ -35,12 +35,12 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit :post_id, :user_id, :content, :parent_id
+    params.require(:comment).permit :post_id, :user_id, :content, :parent_id,
+      :reply_id
   end
 
   def find_post
-    @post = Post.find_by id: params[:post_id]
-
+    @post = Post.find_by id: params[:comment][:post_id]
     return if @post
     flash[:danger] = t "error"
     redirect_back fallback_location: request.referrer

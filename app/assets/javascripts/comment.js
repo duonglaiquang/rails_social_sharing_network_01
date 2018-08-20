@@ -15,9 +15,16 @@ function bindEvent() {
     });
   });
 
+  $('.respond').each(function () {
+    $(this).on('click', function () {
+      $('textarea').val('');
+      $(this).parents('.reply-list').find('.reply-form').slideToggle();
+    });
+  });
+
   $('.reply').each(function () {
     $(this).on('click', function () {
-      $(this).parents('.reply-list').find('.reply-form').slideToggle();
+      $(this).parents('.reply-to-list').find('.reply-to').slideToggle();
     });
   });
 }

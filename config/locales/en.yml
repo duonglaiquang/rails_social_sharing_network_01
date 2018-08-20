@@ -10,7 +10,7 @@ en:
   confirmation: "Confirmation"
   signup: "Sign up"
   are_u_sure: "Are you sure?"
-
+  send_instructions: "Send Instructions"
   layouts:
     modal:
       post: "Post"

@@ -30,6 +30,9 @@ gem "uglifier", ">= 1.3.0"
 gem "omniauth-google-oauth2"
 gem "cancancan"
 gem "ransack"
+gem "social-share-button"
+gem "friendly_id"
+gem "stringex"
 
 group :development, :test do
   gem "pry-rails"

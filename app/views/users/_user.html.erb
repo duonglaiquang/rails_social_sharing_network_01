@@ -10,6 +10,8 @@
       </div>
       <div class="team-content">
         <div class="index-info">
+          <h5>Post: <%= user.posts.count %></h5>
+          <h5>Point: <%= user.point %></h5>
         </div>
         <%= render "follow_form", user: user %>
       </div>

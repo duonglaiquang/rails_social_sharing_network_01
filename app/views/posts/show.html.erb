@@ -19,7 +19,7 @@
               <li class="point">
                 <%= link_to "Posted by " + @post.user.name, @post.user %>
               </li>
-              <li><i class="icon-calendar3"></i><%= @post.created_at %></li>
+              <li><i class="icon-calendar3"></i><%= time_ago_in_words(@post.created_at) + " ago" %></li>
             </ul>
 
             <% if @post[:upload_type] == "seed" %>
@@ -54,22 +54,33 @@
 
           <ul class="entry-meta clearfix post-info">
             <li>
-              <%= link_to "#" do %>
-                <i class="icon-like"></i>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="icon-line2-dislike"></i>
+              <%= form_for :like, url: likes_path, id: "likeform", remote: true do |f| %>
+                <%= f.hidden_field :post_id, value: @post.id %>
+                <%= f.hidden_field :type_id, value: 1 %>
+                <% if user_signed_in? %>
+                  <% liked = current_user.likes.select("post_id").collect(&:post_id) %>
+                  <% if liked.include?(@post.id) %>
+                    <i class="icon-like green"></i>
+                  <% else %>
+                    <i class="icon-like"></i>
+                  <% end %>
+                <% else %>
+                  <i class="icon-like"></i>
+                <% end %>
               <% end %>
             </li>
             <li>
               <span><i class="icon-comments"></i>
                 <%= @post.comments.count %></span>
             </li>
-            <li class="point">
-              <span><%= @post.point %> <%= t "posts.point" %>></span>
+            <li class="point" id="point-<%= @post.id %>">
+              <%= @post.point %> <%= t "posts.point" %>
             </li>
+            <% if @post.tag.present? %>
+              <li class="point">
+                <%= link_to "#" + @post.tag.name, "#", class: "tagcloud" %>
+              </li>
+            <% end %>
           </ul>
 
           <div id="respond" class="clearfix">

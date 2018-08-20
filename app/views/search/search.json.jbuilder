@@ -8,6 +8,6 @@ end
 json.posts do
   json.array!(@posts) do |post|
     json.name post.title
-    json.url root_path
+    json.url post_path(post.id)
   end
 end
